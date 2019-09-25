@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+         
+        //load AST library
+        //create empty apntag object if it doesn't exist
+        var apntag = apntag || {};
+ 
+        //create a queue on the apntag object
+        apntag.anq = apntag.anq || [];
+         
+        //load ast.js - async
+        (function() {
+            var d = document,
+                scr = d.createElement('script'),
+                pro = d.location.protocol,
+                tar = d.getElementsByTagName("head")[0];
+            scr.type = 'text/javascript';
+            scr.async = true;
+            scr.src = ((pro === 'https:') ? 'https' : 'http') + '://acdn.adnxs.com/ast/ast.js';
+            if (!apntag.l) {
+                apntag.l = true;
+                tar.insertBefore(scr, tar.firstChild);
+            }
+        })();
+         
+        //push commands to loading queue, to allow for async loading
+        apntag.anq.push(function() {
+             
+            //set global page options
+            apntag.setPageOpts({
+                member: 958,
+                disablePsa: true,
+                targetingParams: {}
+                
+            });
+             
+            //define ad tags
+            
+​
+        
+​
+              apntag.defineTag({
+                tagId: 17060162,
+                sizes: [[300,250],[1,1]],
+                allowedFormats: ['native', 'banner'],
+                native: {
+                  renderer_id: 273 //Renderer of the Native Layout 321
+                  //renderer_url: "http://dcdn.adnxs.com/renderer-content/c5b72a17-25f4-4a95-b3d8-beeb950a5703",
+                 
+                  // with these additional params, the implementation breaks (seems like renderer_id has to be the only parameter)
+​
+                  //title: {required: true},
+                  //body: {required: true},
+                  //image: {required: true}
+                  //sponsoredBy: {required: false}
+                 },
+                
+                targetId: 'cookieless_test'
+                });
+​
+            //push commands to loading queue to allow for async loading
+            apntag.loadTags();
+        });
+    </script>
+</head>
+ 
+<body>
+       <h1> Cookieless / young cookie Test Page</h1>
+​
+        <div>
+               
+          
+                  <p>After this, the ad. </p>
+​
+                        <div class="test" id="cookieless_test">
+                       <script type="text/javascript">
+                            apntag.anq.push(function() {
+                                apntag.showTag('cookieless_test');
+​
+                           });
+                        </script>
+                        </div>
+​
+       <p>That was the ad. </p>
+      </div>
+</body>
+ 
+</html>
